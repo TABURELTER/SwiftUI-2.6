@@ -13,6 +13,8 @@ struct ContentView: View {
     @State var news:Bool = true
     @State var updateFromFriends:Bool = true
     @State var alert:Bool = false
+    @State var FirstName:String = ""
+    @State var LastName:String = ""
     
     enum Sex:String, CaseIterable, Identifiable {
         case Man,Woman
@@ -25,8 +27,8 @@ struct ContentView: View {
             Form{
                 List{
                     Section("Личные данные"){
-                        TextField("Имя", text: .constant(""))
-                        TextField("Фамилия", text: .constant(""))
+                        TextField("Имя", text: $FirstName)
+                        TextField("Фамилия", text: $LastName)
                         DatePicker("Дата рождения", selection: .constant(Date()),displayedComponents: .date)
                         
                         Picker("Пол",selection: $sex){
